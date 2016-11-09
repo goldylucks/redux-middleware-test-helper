@@ -1,4 +1,8 @@
 node_modules/
 lib/
 
+*.log*
 *sublime*
+*.swp
+reports
+coverage

@@ -1,0 +1,36 @@
+sudo: false
+branches:
+  only:
+  - "/v\\d\\./"
+env:
+- CXX=g++-4.8
+# addons:
+#   apt:
+#     sources:
+#     - ubuntu-toolchain-r-test
+#     packages:
+#     - g++-4.8
+matrix:
+  include:
+  - env: SCRIPT=lint
+  - env: SCRIPT=test
+cache:
+  directories:
+  - node_modules
+script:
+- if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
+before_deploy:
+- npm run build
+# - rm -rf client test
+# - git config --global user.name "travis CI"
+# - git config --global user.email "admin@travis-ci.org"
+# - git add -f build
+# - git commit -m "add build"
+deploy:
+  provider: npm
+  email: adamgoldman7@gmail.com
+  api_key:
+    secure: mGtElS5O0LFEq6luw9wAfcWw7pW+z6dJT7om435YBK4Xc9WieWns77GYafcsGoMFyBWjVdvWOSCoF6oaA2KzM71YopskL9D4kHvs8+4YIpb7ZwDoVszHc1m6QpFAwQBw7WbJogTiHulIT+k81+ejFanBoxQ1INVLl8v5hGqOIFMOOb2S3ZIfT7GidoLl2TkWbdVQrEaR0K+x8+5NOm9ugw4qurJr5qJFKv/hiGR9own6qHA1DnBMOl/F/GTGn0U2N6odZlXdv24SfFemsfRWoFS6LACOX8mQmmFMf9+mJeTZ5iHmwV9sedZvzQhg/EW3WfG3lVOvEc5yccs/nT0WXi1FKA5vcyW/L+27heYSMPncUKyjo2rZurm3yCCnwDbsvIMpueUvRSeEh6KikmOgKXolYBUtR/3ngeOw8Y5Zj7XSMDss+ltCIKxARwDQ80Ca8tBTk+WzyTg1/UYRh1HLLtXqjRkWFqSmDA529c3NTAgJj++qYLmzdXrPzNrfPaaGY6W/qwMCR/XTg/wBvHmwRx5R6pfVomxMZKxVBO2dz8Pe5GphPB3un3K1cmWmIZVNd42Q7QOHVuosJjLM4UqIeV54LPKDjKe0zqxrdTOJAcKWQcQtEhGBzXotksXmipryChlmzfmSsv3nf4XeubUIKo0sOM9lnEumFt9qSri3kgg=
+  on:
+    tags: true
+    repo: goldylucks/redux-middleware-test-helper

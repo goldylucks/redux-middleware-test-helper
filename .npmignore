@@ -4,4 +4,9 @@ scripts/
 test/
 .gitignore
 .npmignore
+.editorconfig
 *sublime*
+*.log*
+*.swp
+reports
+coverage
