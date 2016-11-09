@@ -5,10 +5,11 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha src/index.spec.js",
+    "lint": "eslint src --ignore-path .gitignore",
     "clean": "rm -rf lib/",
     "prebuild": "npm run clean && mkdir lib",
     "build": "babel src/index.js -o lib/index.js",
-    "prelocalPublish": "npm run build && npm run test",
+    "prelocalPublish": "npm run test && npm run lint && npm run build",
     "localPublish": "npm publish"
   },
   "repository": {
