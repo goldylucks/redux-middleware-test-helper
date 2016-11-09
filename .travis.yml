@@ -18,7 +18,7 @@ branches:
 matrix:
   include:
   - env: SCRIPT=lint
-  - env: SCRIPT=test
+  - env: SCRIPT=coverage
 cache:
   directories:
   - node_modules
