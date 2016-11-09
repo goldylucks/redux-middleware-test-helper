@@ -1,6 +1,7 @@
 sudo: false
 branches:
   only:
+  - master
   - "/v\\d\\./"
 env:
 - CXX=g++-4.8
