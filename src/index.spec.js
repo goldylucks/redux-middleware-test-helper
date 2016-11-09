@@ -1,4 +1,4 @@
-import toMiddlewareTest from '../build'
+import toMiddlewareTest from './'
 
 class ExampleMiddleware {
 
