@@ -7,14 +7,6 @@ branches:
   only:
   - master
   - "/v\\d\\./"
-# env:
-# - CXX=g++-4.8
-# addons:
-#   apt:
-#     sources:
-#     - ubuntu-toolchain-r-test
-#     packages:
-#     - g++-4.8
 matrix:
   include:
   - env: SCRIPT=lint
@@ -26,11 +18,6 @@ script:
 - if [ "$SCRIPT" ]; then npm run $SCRIPT; fi
 before_deploy:
 - npm run build
-# - rm -rf client test
-# - git config --global user.name "travis CI"
-# - git config --global user.email "admin@travis-ci.org"
-# - git add -f build
-# - git commit -m "add build"
 deploy:
   provider: npm
   email: adamgoldman7@gmail.com
@@ -39,3 +26,5 @@ deploy:
   on:
     tags: true
     repo: goldylucks/redux-middleware-test-helper
+after_success:
+  - npm run coverage
