@@ -1,11 +1,12 @@
 {
   "name": "redux-middleware-test-helper",
   "version": "0.0.3",
-  "description": "",
+  "description": "Easy way to test redux middlewares base functions",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha src/index.spec.js",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly src/index.spec.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly src/index.spec.js && rm -rf ./coverage",
+    "coverage:ci": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly src/index.spec.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "lint": "eslint src --ignore-path .gitignore",
     "clean": "rm -rf lib/",
     "prebuild": "npm run clean && mkdir lib",

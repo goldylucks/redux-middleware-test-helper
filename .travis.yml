@@ -10,7 +10,7 @@ branches:
 matrix:
   include:
   - env: SCRIPT=lint
-  - env: SCRIPT=coverage
+  - env: SCRIPT=test
 cache:
   directories:
   - node_modules
@@ -27,4 +27,4 @@ deploy:
     tags: true
     repo: goldylucks/redux-middleware-test-helper
 after_success:
-  - npm run coverage
+  - npm run coverage:ci
