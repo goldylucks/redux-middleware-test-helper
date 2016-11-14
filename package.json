@@ -1,6 +1,6 @@
 {
   "name": "redux-middleware-test-helper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Easy way to test redux middlewares base functions",
   "main": "lib/index.js",
   "scripts": {
