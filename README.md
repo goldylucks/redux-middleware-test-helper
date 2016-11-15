@@ -1,6 +1,6 @@
 # Redux Middleware Test Helper
 
-[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![npm downloads][npm-downloads-image]][npm-downloads-url] [![dependencies][dependencies-image]][dependencies-url] [![peerDependencies][peer-dependencies-image]][peer-dependencies-url] [![devDependencies][dev-dependencies-image]][dev-dependencies-url] [![GPLv3][license-image]][license-url]
+[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Code Climate][code-climate-image]][code-climate-url] [![npm downloads][npm-downloads-image]][npm-downloads-url] [![dependencies][dependencies-image]][dependencies-url] [![peerDependencies][peer-dependencies-image]][peer-dependencies-url] [![devDependencies][dev-dependencies-image]][dev-dependencies-url] [![GPLv3][license-image]][license-url]
 
 ## Why?
 In every middleware we want to test the following:
@@ -92,6 +92,8 @@ The code is available under the [GPL v3 license][license-url].
 
 [travis-image]: https://travis-ci.org/goldylucks/redux-middleware-test-helper.svg?branch=master
 [travis-url]: https://travis-ci.org/goldylucks/redux-middleware-test-helper
+[code-climate-image]: https://codeclimate.com/github/goldylucks/redux-middleware-test-helper/badges/gpa.svg
+[code-climate-url]: https://codeclimate.com/github/goldylucks/redux-middleware-test-helper
 [coveralls-image]: https://coveralls.io/repos/github/goldylucks/redux-middleware-test-helper/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/goldylucks/redux-middleware-test-helper?branch=master
 [npm-downloads-image]: https://img.shields.io/npm/dt/redux-middleware-test-helper.svg
