@@ -16,7 +16,7 @@ Here r [some][example-url] [working][example-url-2] [examples][example-url-3] of
 $ npm install --save-dev redux-middleware-test-helper
 ```
 ```javascript
-# ExampleMiddleware.spec.js
+# ExampleMiddleware.js
 import toMiddlewareTest from 'redux-middleware-test-helper'
 class ExampleMiddleware {
 
@@ -48,6 +48,7 @@ class ExampleMiddleware {
 
 }
 
+# ExampleMiddleware.spec.js
 describe('exampleMiddleware', () => {
   toMiddlewareTest({
     cut: new ExampleMiddleware(),
@@ -104,6 +105,8 @@ The code is available under the [GPL v3 license][license-url].
 [dev-dependencies-url]: https://david-dm.org/goldylucks/redux-middleware-test-helper?type=dev
 [dependencies-image]: https://img.shields.io/david/goldylucks/redux-middleware-test-helper.svg
 [dependencies-url]: https://david-dm.org/goldylucks/redux-middleware-test-helper
+[npm-image]: https://www.npmjs.com/package/redux-middleware-test-helper
+[npm-url]: https://img.shields.io/npm/v/redux-middleware-test-helper.svg
 [license-image]: https://img.shields.io/badge/license-GPL%20v3-brightgreen.svg
 [license-url]: http://www.gnu.org/licenses/gpl-3.0.en.html
 [UT-link]: https://www.google.co.za/search?q=unit+tests&oq=unit+tests&aqs=chrome..69i57j69i60l5.783j0j7&sourceid=chrome&ie=UTF-8
