@@ -10,7 +10,7 @@ export default ({ methods, cut }) => {
     let next
     let action
 
-    beforeEach('setup1 spies', () => {
+    beforeEach('setup spies', () => {
       methods.forEach(({ methodName }) => cut[methodName] = spy())
       next = spy()
     })
@@ -19,7 +19,7 @@ export default ({ methods, cut }) => {
       // given
       action = { type: '' }
 
-      // w2hen
+      // when
       middleware(store)(next)(action)
 
       // then

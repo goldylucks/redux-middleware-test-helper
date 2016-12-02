@@ -16,6 +16,12 @@ class ExampleMiddleware {
         return
       }
 
+      if (action.type.match(/one type|or another/)) {
+        this.onEneTypeOrAnother()
+        next(action)
+        return
+      }
+
       next(action)
     }
   }
@@ -28,6 +34,10 @@ class ExampleMiddleware {
 
   }
 
+  onEneTypeOrAnother () {
+
+  }
+
 }
 
 describe('exampleMiddleware', () => {
@@ -36,6 +46,8 @@ describe('exampleMiddleware', () => {
     methods: [
       { methodName: 'onInitApp', actionType: 'init app' },
       { methodName: 'onEndGame', actionType: 'end game' },
+      { methodName: 'onEneTypeOrAnother', actionType: 'one type' },
+      { methodName: 'onEneTypeOrAnother', actionType: 'or another' },
     ],
   })
 })

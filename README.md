@@ -66,8 +66,10 @@ exampleMiddleware
     ✓ should call only next(action)
     ✓ should call only next(action), onInitApp
     ✓ should call only next(action), onEndGame
+    ✓ should call only next(action), onEneTypeOrAnother
+    ✓ should call only next(action), onEneTypeOrAnother
 
-3 passing (175ms)
+5 passing (15ms)
 
 ```
 
