@@ -12,12 +12,20 @@ class ExampleMiddleware {
 
       if (action.type === 'end game') {
         this.onEndGame()
+        this.onEndGameToo()
         next(action)
         return
       }
 
       if (action.type.match(/one type|or another/)) {
-        this.onEneTypeOrAnother()
+        this.onOneTypeOrAnother()
+        next(action)
+        return
+      }
+
+      if (action.type.match(/third type|or fourth/)) {
+        this.onThirdTypeOrFourth()
+        this.onThirdTypeOrFourth2()
         next(action)
         return
       }
@@ -34,7 +42,19 @@ class ExampleMiddleware {
 
   }
 
-  onEneTypeOrAnother () {
+  onEndGameToo () {
+
+  }
+
+  onOneTypeOrAnother () {
+
+  }
+
+  onThirdTypeOrFourth () {
+
+  }
+
+  onThirdTypeOrFourth2 () {
 
   }
 
@@ -43,11 +63,13 @@ class ExampleMiddleware {
 describe('exampleMiddleware', () => {
   toMiddlewareTest({
     cut: new ExampleMiddleware(),
-    methods: [
-      { methodName: 'onInitApp', actionType: 'init app' },
-      { methodName: 'onEndGame', actionType: 'end game' },
-      { methodName: 'onEneTypeOrAnother', actionType: 'one type' },
-      { methodName: 'onEneTypeOrAnother', actionType: 'or another' },
-    ],
+    actionTypes: {
+      'init app': 'onInitApp',
+      'end game': ['onEndGame', 'onEndGameToo'],
+      'one type': 'onOneTypeOrAnother',
+      'or another': 'onOneTypeOrAnother',
+      'third type': ['onThirdTypeOrFourth', 'onThirdTypeOrFourth2'],
+      'or fourth': ['onThirdTypeOrFourth', 'onThirdTypeOrFourth2'],
+    },
   })
 })

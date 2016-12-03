@@ -3,15 +3,20 @@ import { spy, stub } from 'sinon'
 import sinonChai from 'sinon-chai'
 chai.use(sinonChai)
 
-export default ({ methods, cut }) => {
+export default ({ actionTypes, cut }) => {
   describe('toMiddleware', () => {
+    let methods = []
     const middleware = cut.toMiddleware()
     const store = { getState: stub.returns({}) }
     let next
     let action
 
     beforeEach('setup spies', () => {
-      methods.forEach(({ methodName }) => cut[methodName] = spy())
+      for (let type in actionTypes) {
+        methods = methods.concat(actionTypes[type])
+      }
+      methods = union(methods)
+      methods.forEach(method => cut[method] = spy())
       next = spy()
     })
 
@@ -26,16 +31,16 @@ export default ({ methods, cut }) => {
       expect(next).to.have.been.calledWith(action)
       expect(next).to.have.been.calledOnce
 
-      methods.forEach(({ methodName, actionType }) => {
-        expect(cut[methodName]).to.not.have.been.called
+      methods.forEach(method => {
+        expect(cut[method]).to.not.have.been.called
       })
     })
 
-    methods.forEach(({ methodName, actionType }) => {
-      const restOfMethods = methods.filter(m => m.methodName !== methodName)
-      it(`should call only next(action), ${methodName}`, () => {
+    for (let type in actionTypes) {
+      const methodsThatShouldBeCalled = actionTypes[type]
+      it(`should only call next(action), ${methodsThatShouldBeCalled}`, () => {
         // given
-        action = { type: actionType }
+        action = { type }
 
         // when
         middleware(store)(next)(action)
@@ -43,11 +48,24 @@ export default ({ methods, cut }) => {
         // then
         expect(next).to.have.been.calledWith(action)
         expect(next).to.have.been.calledOnce
-        expect(cut[methodName]).to.have.been.calledOnce
-        restOfMethods.forEach(m => {
-          expect(cut[m.methodName]).to.not.have.been.called
-        })
+        if (typeof methodsThatShouldBeCalled === 'string') {
+          expect(cut[methodsThatShouldBeCalled]).to.have.been.calledOnce
+        } else {
+          methodsThatShouldBeCalled.forEach(method => {
+            expect(cut[method]).to.have.been.calledOnce
+          })
+        }
       })
-    })
+    }
   })
+}
+
+function union (methods) {
+  const res = []
+  methods.forEach(method => {
+    if (res.indexOf(method) === -1) {
+      res.push(method)
+    }
+  })
+  return res
 }
